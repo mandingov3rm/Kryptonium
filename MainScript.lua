@@ -160,11 +160,10 @@ end)
 spawn(function()
 	wait(1)
 	Notify("Kryptonium - For Exploiters.", BrickColor.new("Bright red").Color)
-	Notify("Press '=' to set way points!", Color3.new(1, 1, 1))
 	Notify("Click to select and again to delete! Press 'c' to de-select.", Color3.new(1, 1, 1))
-	Notify("Press 'x' to teleport to your mouse.", Color3.new(1, 1, 1))
 	Notify("Press ' to enable/disable keybindings.", Color3.new(1, 1, 1))
-	Notify("Created by FluffyDeveloper.\nEdited by mandingo#0316", Color3.new(1, 1, 1))
+	Notify("Created by FluffyDeveloper.", Color3.new(1, 1, 1))
+	Notify("Edited by mandingo#0316.", Color3.new(1,1,1))
 end)
 
 local Enabled = true
