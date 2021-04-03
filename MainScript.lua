@@ -18,14 +18,14 @@ function randomString()
 end
 
 if not _G.KryptoniumKeybindings then
-	
+
 	_G.KryptoniumKeybindings = {
-		
+
 		Deselect="C";
 		ClickTP="X";
 		LastPosition="B";
 	}
-	
+
 end
 
 if (not is_sirhurt_closure) and (syn and syn.protect_gui) then
@@ -47,11 +47,11 @@ else
 end
 
 Notify = function(Textt, Color)
-	
+
 	if Notifications == false then
 		return
 	end
-	
+
 	local X = 0.3
 	local Count = 0
 	if MainGui:FindFirstChild("Notify") then
@@ -168,8 +168,9 @@ spawn(function()
 	Notify("Kryptonium", BrickColor.new("Bright red").Color)
 	Notify("Click to select, click again to delete. Press '".._G.KryptoniumKeybindings.Deselect.."' to de-select.", Color3.new(1, 1, 1))
 	Notify("Press '".._G.KryptoniumKeybindings.ClickTP.."' to teleport to your mouse", Color3.new(1,1,1))
-	Notify("Press '".._G.KryptoniumKeybindings.LastPos.."' to teleport back to your last location", Color3.new(1,1,1))
+	Notify("Press '".._G.KryptoniumKeybindings.LastPosition.."' to teleport back to your last location", Color3.new(1,1,1))
 	Notify("Press ' (apostrophe) to enable/disable keybindings.", Color3.new(1, 1, 1))
+	Notify("Press '=' to enable/disable notifications.", Color3.new(1,1,1))
 	Notify("Created by FluffyDeveloper.", Color3.new(1, 1, 1))
 	Notify("Edited by mandingo#0316.", Color3.new(1,1,1))
 end)
@@ -337,13 +338,13 @@ Mouse.KeyDown:Connect(function(Key)
 			Enabled = true
 			Notify("Enabled key-binds!", Color3.new(1, 1, 1))
 		end
-	elseif Key == tostring(_G.KryptoniumKeybindings.Deslect):lower() and Enabled then
+	elseif Key == tostring(_G.KryptoniumKeybindings.Deselect):lower() and Enabled then
 		if Selected then
 			if Selected:FindFirstChild("Box") then
 				Selected.Box:Destroy()
 			end
-			Notify("De-selected: " .. Selected.Name, Color3.new(1, 1, 1))
 			Selected = nil
+			Notify("De-selected: " .. Selected.Name, Color3.new(1, 1, 1))
 		end
 	elseif Key == tostring(_G.KryptoniumKeybindings.ClickTP):lower() and Enabled then
 		LastPos = Player.Character:FindFirstChild("HumanoidRootPart").Position
@@ -358,7 +359,13 @@ Mouse.KeyDown:Connect(function(Key)
 			wait(.1)
 		end
 		Player.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(LastPos)
-	elseif Key == "#" then
-		Notifications = not Notifications
+	elseif Key == "=" then
+		if Notifications then
+			Notify("Disabled notifications!", Color3.new(1,1,1))
+			Notifications = false
+		else
+			Notifications = true
+			Notify("Enabled notifications", Color3.new(1,1,1))
+		end
 	end
 end)
