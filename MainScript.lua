@@ -344,7 +344,7 @@ Mouse.KeyDown:Connect(function(Key)
 				Selected.Box:Destroy()
 			end
 			Selected = nil
-			Notify("De-selected: " .. Selected.Name, Color3.new(1, 1, 1))
+			Notify("De-selected: "..Selected.Name.."", Color3.new(1, 1, 1))
 		end
 	elseif Key == tostring(_G.KryptoniumKeybindings.ClickTP):lower() and Enabled then
 		LastPos = Player.Character:FindFirstChild("HumanoidRootPart").Position
