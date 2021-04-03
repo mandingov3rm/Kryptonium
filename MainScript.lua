@@ -5,6 +5,7 @@ local LastPos = Player.Character:FindFirstChild("HumanoidRootPart").Position
 local CoreGui = game:GetService("CoreGui")
 local Cam = workspace.CurrentCamera
 local Mouse = Player:GetMouse()
+local Notifications = true
 local MainGui
 
 function randomString()
@@ -46,6 +47,11 @@ else
 end
 
 Notify = function(Textt, Color)
+	
+	if Notifications == false then
+		return
+	end
+	
 	local X = 0.3
 	local Count = 0
 	if MainGui:FindFirstChild("Notify") then
@@ -159,9 +165,11 @@ end)
 
 spawn(function()
 	wait(1)
-	Notify("Kryptonium - For Exploiters.", BrickColor.new("Bright red").Color)
-	Notify("Click to select and again to delete! Press 'c' to de-select.", Color3.new(1, 1, 1))
-	Notify("Press ' to enable/disable keybindings.", Color3.new(1, 1, 1))
+	Notify("Kryptonium", BrickColor.new("Bright red").Color)
+	Notify("Click to select, click again to delete. Press '".._G.KryptoniumKeybindings.Deselect.."' to de-select.", Color3.new(1, 1, 1))
+	Notify("Press '".._G.KryptoniumKeybindings.ClickTP.."' to teleport to your mouse", Color3.new(1,1,1))
+	Notify("Press '".._G.KryptoniumKeybindings.LastPos.."' to teleport back to your last location", Color3.new(1,1,1))
+	Notify("Press ' (apostrophe) to enable/disable keybindings.", Color3.new(1, 1, 1))
 	Notify("Created by FluffyDeveloper.", Color3.new(1, 1, 1))
 	Notify("Edited by mandingo#0316.", Color3.new(1,1,1))
 end)
@@ -344,13 +352,13 @@ Mouse.KeyDown:Connect(function(Key)
 			wait(.1)
 		end
 		Player.Character:FindFirstChild("HumanoidRootPart").CFrame = Mouse.Hit + Vector3.new(0,7,0)
-		Notify("Teleported to mouse position", Color3.new(1,1,1))
 	elseif Key == tostring(_G.KryptoniumKeybindings.LastPosition):lower() and Enabled then
 		if Player.Character:FindFirstChildOfClass("Humanoid") and Player.Character:FindFirstChildOfClass("Humanoid").SeatPart then
 			Player.Character:FindFirstChildOfClass("Humanoid").Sit = false
 			wait(.1)
-		end	
+		end
 		Player.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(LastPos)
-		Notify("Teleported to previous position", Color3.new(1,1,1))
+	elseif Key == "#" then
+		Notifications = not Notifications
 	end
 end)
