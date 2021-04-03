@@ -19,6 +19,7 @@ end
 if not _G.KryptoniumKeybindings then
 	
 	_G.KryptoniumKeybindings = {
+		
 		Deselect="C";
 		ClickTP="X";
 		LastPosition="B";
@@ -345,7 +346,7 @@ Mouse.KeyDown:Connect(function(Key)
 		end
 		Player.Character:FindFirstChild("HumanoidRootPart").CFrame = Mouse.Hit + Vector3.new(0,7,0)
 		Notify("Teleported to mouse position", Color3.new(1,1,1))
-	elseif Key == tostring(_G.KryptoniumKeyBindings.LastPosition):lower() and Enabled then
+	elseif Key == tostring(_G.KryptoniumKeybindings.LastPosition):lower() and Enabled then
 		if Player.Character:FindFirstChildOfClass("Humanoid") and Player.Character:FindFirstChildOfClass("Humanoid").SeatPart then
 			Player.Character:FindFirstChildOfClass("Humanoid").Sit = false
 			wait(.1)
