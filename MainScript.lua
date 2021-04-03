@@ -353,12 +353,14 @@ Mouse.KeyDown:Connect(function(Key)
 			wait(.1)
 		end
 		Player.Character:FindFirstChild("HumanoidRootPart").CFrame = Mouse.Hit + Vector3.new(0,7,0)
+		Notify("Teleported to mouse", Color3.new(1,1,1))
 	elseif Key == tostring(_G.KryptoniumKeybindings.LastPosition):lower() and Enabled then
 		if Player.Character:FindFirstChildOfClass("Humanoid") and Player.Character:FindFirstChildOfClass("Humanoid").SeatPart then
 			Player.Character:FindFirstChildOfClass("Humanoid").Sit = false
 			wait(.1)
 		end
 		Player.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(LastPos)
+		Notify("Teleported to last location", Color3.new(1,1,1))
 	elseif Key == "=" then
 		if Notifications then
 			Notify("Disabled notifications!", Color3.new(1,1,1))
